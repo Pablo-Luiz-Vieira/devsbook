@@ -291,6 +291,10 @@ header .head-side {
 .profile-info-item {
     text-align: center;
 }
+
+.profile-info-item a{
+    text-decoration: none;
+}
 .profile-info-item-n {
     font-weight: bold;
     font-size:20px;
@@ -350,6 +354,7 @@ header .head-side {
 
 .user-photo-item {
     margin-right:10px;
+    max-width: 25%;
 }
 .user-photo-item:last-child {
     margin-right:0;
@@ -389,7 +394,72 @@ header .head-side {
 }
 .full-user-photos .user-photo-item {
     margin:0;
+    max-width: 100%;
 }
+
+.feed-pagination a{
+    display: inline-block;
+    padding: 7px 10px;
+    border: 1px solid #ccc;
+    margin:5px;
+    text-decoration: none;
+    color:#000;
+
+}
+.feed-pagination a:hover{
+    background-color: #DDD;
+}
+
+.feed-pagination a.active{
+    background-color:#FFF;
+}
+.button {
+    border:0;
+    padding:15px 20px;
+    background-color:#4a76a8;
+    border-radius:10px;
+    color:#FFF;
+    font-size:15px;
+    cursor:pointer;
+    box-shadow:0px 0px 3px #999;
+    text-decoration: none;
+    display: inline-block;
+}
+.button:hover {
+    background-color:#477dbb;
+}
+
+
+
+.form-confir-input-submit {
+    max-width: 80px;
+   /* height: 40px;*/
+   line-height: 6px;
+}
+.form-config-file {
+    margin: 15px 0 15px 0;
+}
+.form-config-file input {
+    margin: 10px 0 15px 15px  ;    
+}
+.form-config-data {
+    margin:10px 0 10px 0 ;
+}
+.form-config-data input{
+    margin-bottom:10px; 
+    width: 500px;
+    /*line-height: 33px;*/
+    height: 35px;
+}
+.flash {
+    border:2x solid red;
+    background-color: red;
+    color: white;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+
 
 @media (max-width: 992px) {
     header .head-side-right {
@@ -477,5 +547,12 @@ header .head-side {
     .full-user-photos {
         grid-template-columns: repeat(1, 1fr);
     }
+
+    .campos-1 form{
+        display: flex;
+        flex-direction: column;
+    }
+
+    
 
 }
