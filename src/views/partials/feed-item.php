@@ -58,7 +58,7 @@
        
                <div class="feed-item-comments">
 
-       <!--
+       
                <div class="fic-item row m-height-10 m-width-20">
        
                <div class="fic-item-photo">
@@ -76,7 +76,7 @@
                        </div>
        
                    </div>
-        -->
+        
        
                    
             <div class="fic-answer row m-height-10 m-width-20">

@@ -1,39 +1,72 @@
-<?php $render('header', ['loggedUser' => $loggedUser]) ?>
-    <section class="container main">
-        <?php $render('sidebar',['activeMenu' =>'search']) ?>
-        <section class="feed mt-10">
-            <h1>Configurações</h1>
-            <form action="<?=$base; ?>/config" method="POST" class="form-config">
-                <?php if(!empty($flash)):?>
-                    <div class='flash'> <?php echo $flash;?></div>
-                <?php endif;?> 
-                <div class="form-config-file">
-                    <label>Novo Avatar:</label><br/>
-                    <input type="file" placeholder="Escolher arquivo" name="avatarFile"/><br/><br/>
-                    <label>Nova Capa:</label><br>
-                    <input type="file" placeholder="Escolher arquivo" name="coverFile"/>
-                </div>
+<?= $render('header', ['loggedUser' => $loggedUser]); ?>
+<section class="container main">
+    <?= $render('sidebar', ['activeMenu' => 'config']); ?>
+    <section class="feed mt-10">
+        <h1>Configurações</h1>
+        <div class="row">
+            <form action="<?= $base; ?>/config" method="post" class="config-form">
+                <?php  if(!empty($flash)): ?>
+                   <h1><div class="flash"><?= $flash; ?></div></h1> 
+                <?php endif; ?>
+                <label>
+                    <span>Novo Avatar:</span>
+                    <input type="file" name="avatar" id="avatar" />
+                </label>
+                <label>
+                    <span>Nova Capa:</span>
+                    <input type="file" name="cover" id="cover" />
+                </label>
                 <hr/>
-                <div class="form-config-data">
-                    <label>Nome Completo</label><br/>
-                    <input type="text" name="name" id="name" placeholder="<?=$loggedUser->name;?>"/><br/>
-                    <label>Data de nascimento:</label><br/>
-                    <input type="text" onfocus="(this.type='date')"  name="birthDate" id="birthDate" placeholder="<?=date('d/m/Y', strtotime($loggedUser->birthDate));  ?>" ><br/>
-                    <label>E-mail</label><br/>
-                    <input type="email" name="email" id="email" placeholder="<?=$loggedUser->email;?>"/><br/>
-                    <label>Cidade:</label><br/>
-                    <input type="text" name="city" id="city" placeholder="<?=$loggedUser->city;?>"/><br/>
-                    <label>Trabalho:</label><br/>
-                    <input type="text" name="work" id="work" placeholder="<?=$loggedUser->work;?>"/><br/>
-                    <hr/><br/>
-                    <label>Nova Senha:</label><br/>                    
-                    <input type="password" name="password" id="password"/><br/>
-                    <label>Confirmar Nova Senha:</label><br/>
-                    <input type="password" name="newPassword" id="newPassword"/><br/>
-                    <input type="submit" class="button form-confir-input-submit" value="Salvar"/>
-                </div>
+                
+                <label>
+                    <span>Nome:</span>
+                    <input type="text" name="name" placeholder="<?= $loggedUser->name; ?>" id="name" required/>
+                </label>
+                
+                <label>
+                    <span>Data de Nascimento:</span>
+                    <input type="text" name="birthdate" placeholder="<?= date('d/m/Y' ,strtotime($loggedUser->birthdate)); ?>" id="birthdate" required  />
+                </label>
+                
+                <label>
+                    <span>E-mail:</span>
+                    <input type="email" name="email" value="<?= $loggedUser->email; ?>" id="email" required  />
+                </label>
+                
+                <label>
+                    <span>Cidade:</span>
+                    <input type="text" name="city" id="city" value="<?= $loggedUser->city ?? ''; ?>"  />
+                </label>
+                
+                <label>
+                    <span>Trabalho:</span>
+                    <input type="text" name="work" id="work" value="<?= $loggedUser->work ?? ''; ?>" />
+                </label>
+                <hr />
+                
+                <label>
+                    <span>Nova Senha:</span>
+                    <input type="password" id="password" name="password" />
+                </label>
+                
+                <label>
+                    <span>Confirmar Nova Senha:</span>
+                    <input type="password" id="password_confirmation" name="password_confirmation" />
+                </label>
+                <label class="button">
+                    <input type="submit" value="Salvar" class="button" />
+                </label>                
             </form>
-        </section>
+        </div>
     </section>
- <?php $render('footer')?>; 
- </body>
+</section>
+<script src="https://unpkg.com/imask"></script>
+<script>
+    IMask(
+        document.getElementById('birthdate'),
+        {
+            mask: '00/00/0000'
+        }
+    );
+</script>
+<?= $render('footer'); ?>

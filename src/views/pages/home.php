@@ -1,6 +1,6 @@
 <?=$render('header', ['loggedUser'=>$loggedUser]);?>
 
-<section class="container main">
+    <section class="container main">
         <?=$render('sidebar', ['activeMenu'=>'home']);?>
    
    

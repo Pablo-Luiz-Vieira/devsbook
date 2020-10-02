@@ -8,20 +8,25 @@ use \src\handlers\PostHandler;
 
 class UserHandler  {
 
-  public static function checkLogin(){
+  public static function checkLogin($allFields = false){
     if(!empty($_SESSION['token'])){
         $token = $_SESSION['token'];
-        $user = User::select()->where('token', $token)->one();
+        $data = User::select()->where('token', $token)->one();
                    
-        if(count($user)>0){
+        if(count($data)>0){
             $loggedUser = new User();
-            $loggedUser->id = $user['id'];
-            $loggedUser->name = $user['name'];
-            $loggedUser->avatar = $user['avatar'];
-            $loggedUser->birthDate = $user['birthdate'];
-            $loggedUser->email = $user['email'];
-            $loggedUser->city = $user['city'];
-            $loggedUser->work = $user['work'];
+            $loggedUser->id = $data['id'];
+            $loggedUser->name = $data['name'];
+            $loggedUser->avatar = $data['avatar'];
+            
+            if($allFields){
+            $loggedUser->birthdate = $data['birthdate'];
+            $loggedUser->password = $data['password'];
+            $loggedUser->email = $data['email'];
+            $loggedUser->city = $data['city'];
+            $loggedUser->work = $data['work'];
+            $loggedUser->cover = $data['cover'];
+            }
             return $loggedUser;
         }
     }    
@@ -187,33 +192,19 @@ class UserHandler  {
 
     }
 
-    public static function updateUser($id, $email, $password, $name, $birthDate, $city, $work, $avatar, $cover){
-      //Gera o hash da senha, caso a senha mude
-      if(!empty($password)){
-          $hash = password_hash($password, PASSWORD_DEFAULT);
-          User::update()
-              ->set('email',$email)
-              ->set('password',$hash)
-              ->set('name', $name)
-              ->set('birthdate', $birthDate)
-              ->set('city', $city)
-              ->set('work', $work)
-              ->set('avatar',$avatar)
-              ->set('cover',$cover)
-              ->where('id',$id)
-          ->execute();
-      } else {
-          User::update()
-              ->set('email',$email)
-              ->set('name', $name)
-              ->set('birthdate', $birthDate)
-              ->set('city', $city)
-              ->set('work', $work)
-              ->set('avatar',$avatar)
-              ->set('cover',$cover)
-              ->where('id',$id)
-          ->execute();
-      }
+    public static function updateUser($updateFields)
+    {
+        User::update()
+            ->set('name', $updateFields['name'])
+            ->set('email', $updateFields['email'])
+            ->set('birthdate', $updateFields['birthdate'])
+            ->set('password', $updateFields['password'])
+            ->set('city', $updateFields['city'])
+            ->set('work', $updateFields['work'])
+            ->set('avatar', $updateFields['avatar'])
+            ->set('cover', $updateFields['cover'])
+            ->where('id', $updateFields['id'])
+            ->execute();
     }
 
 }

@@ -413,9 +413,10 @@ header .head-side {
 .feed-pagination a.active{
     background-color:#FFF;
 }
-.button {
+.button  {
     border:0;
-    padding:15px 20px;
+    max-width: 100px;
+    padding:5px 20px;
     background-color:#4a76a8;
     border-radius:10px;
     color:#FFF;
@@ -429,35 +430,32 @@ header .head-side {
     background-color:#477dbb;
 }
 
+.config-form{
+    margin-top: 10px;
+}
+
+.config-form label{
+    display: block;
+    padding: 10px 0;
+}
+
+.config-form input {
+    font-size: 14px;
+    width: 100%;
+    max-width:500px;
+    padding: 10px 15px;
+}
+
+.config-form .mini{
+    max-height: 100px;
+}
+
+.flash{
+    background-color: #ff0000;
+}
 
 
-.form-confir-input-submit {
-    max-width: 80px;
-   /* height: 40px;*/
-   line-height: 6px;
-}
-.form-config-file {
-    margin: 15px 0 15px 0;
-}
-.form-config-file input {
-    margin: 10px 0 15px 15px  ;    
-}
-.form-config-data {
-    margin:10px 0 10px 0 ;
-}
-.form-config-data input{
-    margin-bottom:10px; 
-    width: 500px;
-    /*line-height: 33px;*/
-    height: 35px;
-}
-.flash {
-    border:2x solid red;
-    background-color: red;
-    color: white;
-    padding: 10px;
-    margin-bottom: 20px;
-}
+
 
 
 
