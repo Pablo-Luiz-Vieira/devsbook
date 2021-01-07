@@ -28,10 +28,10 @@ var VanillaModal = (function () {
       closeKey: 27,
       transitions: true,
       transitionEnd: null,
-      onBeforeOpen: function () { },
-      onBeforeClose: function () { },
-      onOpen: function () { },
-      onClose: function () { }
+      onBeforeOpen: function () {},
+      onBeforeClose: function () {},
+      onOpen: function () {},
+      onClose: function () {}
     };
 
     this._applyUserSettings(userSettings);
@@ -419,4 +419,3 @@ var VanillaModal = (function () {
     window.VanillaModal = VanillaModal;
   }
 })();
-

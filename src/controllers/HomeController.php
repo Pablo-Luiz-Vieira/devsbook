@@ -6,19 +6,17 @@ use \src\handlers\UserHandler;
 use \src\handlers\PostHandler;
 
 class HomeController extends Controller {
-    
+
     private $loggedUser;
-    
-    public function __construct(){
+
+    public function __construct() {
         $this->loggedUser = UserHandler::checkLogin();
-        if ($this->loggedUser === false){
-         $this->redirect('/login');
+        if($this->loggedUser === false) {
+            $this->redirect('/login');
         }
     }
 
-
     public function index() {
-
         $page = intval(filter_input(INPUT_GET, 'page'));
 
         $feed = PostHandler::getHomeFeed(
@@ -32,6 +30,4 @@ class HomeController extends Controller {
         ]);
     }
 
-    
-  
 }

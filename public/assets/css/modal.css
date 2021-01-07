@@ -1,4 +1,4 @@
-.modal { display: none; }
+.modal { display: none !important; }
 
 .vanilla-modal .modal {
   display: block;
